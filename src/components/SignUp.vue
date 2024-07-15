@@ -33,6 +33,9 @@
         </button>
         </div>
       
+        <p class="mt-4 text-xl text-gray-500 font-semibold">
+            <router-link to="/login">Login</router-link>
+        </p>
     </div>  
 </template>
 
@@ -65,6 +68,15 @@ export default{
                     name:"Home"
                  })
             }
+        }
+    },
+
+    mounted(){
+        let user = localStorage.getItem("user-info");
+        if(user){
+            this.$router.push({
+                name:"Home"
+            })
         }
     }
 }

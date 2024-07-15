@@ -1,6 +1,8 @@
 import Home from './components/Home.vue';
 import SignUp from './components/SignUp.vue';
 import {createRouter, createWebHistory} from 'vue-router'
+import Login from './components/Login.vue';
+import Header from './components/Header.vue';
 
 const routes =[
     {
@@ -12,6 +14,17 @@ const routes =[
         name:"SignUp",
         component:SignUp,
         path:'/'
+    },
+    {
+        name:"Login",
+        component:Login,
+        path:"/login"
+    },
+    {
+        name:'Header',
+        component:Header,
+        path:'/header'
+
     }
 ];
 
@@ -19,4 +32,5 @@ const router = createRouter({
     history : createWebHistory(),
     routes, 
 })
+
 export default router;
