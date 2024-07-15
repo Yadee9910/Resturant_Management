@@ -8,16 +8,30 @@
         <router-view></router-view>
     </div>
 
+    <div class="grid grid-cols-5 gap-12 mt-8 ">
+        <div v-for="item in foods" :key="item.id" 
+            class="border bg-yellow-100 flex flex-col items-center justify-center mb-4">
+           <div class=" w-full h-full">
+            <img :src=item.image class="object-container w-full h-64">
+           </div>
+            
+            <h2 class="text-lg font-semibold mt-4">{{ item.name }}</h2>
+
+        </div>
+
+    </div>
    
 </template>
 
 <script>
 import Header from './Header.vue';
+import axios from 'axios';
 
     export default{
         data(){
             return{
-                name:''
+                name:'',
+                foods:[]
             }
         },
         name:'Home-Page',
@@ -25,7 +39,7 @@ import Header from './Header.vue';
             Header
         },
         //it will automatically called when page is loaded
-        mounted(){
+       async  mounted(){
         let user = localStorage.getItem("user-info");
         
         this.name = JSON.parse(user)[0].name;
@@ -34,6 +48,10 @@ import Header from './Header.vue';
                 name:"/"
             })
         }
+        let result = await axios.get("http://localhost:3000/foodItems");
+        console.log(result);
+        this.foods = result.data;
+       
         }
     }
     
