@@ -34,7 +34,7 @@
         </div>
       
         <p class="mt-4 text-xl text-gray-500 font-semibold">
-            <router-link to="/login">Login</router-link>
+            <router-link to="/">Login</router-link>
         </p>
     </div>  
 </template>

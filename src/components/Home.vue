@@ -16,7 +16,7 @@ import Header from './Header.vue';
         let user = localStorage.getItem("user-info");
         if(!user){
             this.$router.push({
-                name:"SignUp"
+                name:"/"
             })
         }
         }
