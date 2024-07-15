@@ -3,12 +3,26 @@ import SignUp from './components/SignUp.vue';
 import {createRouter, createWebHistory} from 'vue-router'
 import Login from './components/Login.vue';
 import Header from './components/Header.vue';
+import Add from './components/Add.vue';
+import Update from './components/Update.vue';
 
 const routes =[
     {
         name:'Home',
         component:Home,
-        path:'/home'
+        path:'/home',
+        children: [
+            {
+              path: 'add',
+              name: 'Add',
+              component: Add
+            },
+            {
+              path: 'update',
+              name: 'Update',
+              component: Update
+            }
+          ]
     },
     {
         name:"SignUp",
