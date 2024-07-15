@@ -5,7 +5,15 @@
 
 <script>
 export default{
-    name:"Add-Page"
+    name:"Add-Page",
+    mounted(){
+        let user = localStorage.getItem("user-info");
+        if(!user){
+            this.$router.push({
+                name:"/"
+            })
+        }
+    }
 }
 </script>
 

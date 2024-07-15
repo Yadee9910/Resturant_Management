@@ -4,7 +4,15 @@
 
 <script>
 export default{
-    name:'update-page'
+    name:'update-page',
+    mounted(){
+        let user = localStorage.getItem("user-info");
+        if(!user){
+            this.$router.push({
+                name:"/"
+            })
+        }
+    }
 }
 </script>
 
