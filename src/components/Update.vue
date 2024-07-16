@@ -25,8 +25,8 @@
             <div class="flex flex-col gap-1 w-full">
                 <label>Image Url</label>
                 <input  
-                        v-model="addfood.imageurl"
-                        name="image"
+                        v-model="addfood.image"
+                        name="imageUrl"
                         type="text"
                         class="border py-2 pl-2 focus:outline-none"
                 >
@@ -35,7 +35,7 @@
             <button 
                 type="button"
                 class="bg-yellow-500 text-lg w-full  py-1 mt-4 text-white tracking-widest  hover:bg-yellow-400"
-                v-on:click="addItems"
+                v-on:click="updateItems"
             >
                  Update
             </button>
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default{
     name:'update-page',
 
@@ -51,18 +53,42 @@ export default{
         return{
             addfood:{
                 name:"",
-                imageurl:"",
+                image:"",
                 price:"",
             }
         }
     },
 
-    mounted(){
+   async mounted(){
         let user = localStorage.getItem("user-info");
+        console.log(this.$route.params.id);
         if(!user){
             this.$router.push({
                 name:"/"
             })
+        }
+
+        let result = await axios.get(`http://localhost:3000/foodItems/`+this.$route.params.id);
+        this.addfood = result.data;
+
+
+    },
+
+    methods:{
+        async updateItems(){
+            const result = await axios.patch(`http://localhost:3000/foodItems/`+this.$route.params.id,{
+                name:this.addfood.name,
+                price:this.addfood.price,
+                image:this.addfood.image
+            });
+
+            console.log("update result", result);
+            if(result.status == 200){
+                this.$emit('item-added');
+                this.$router.push({
+                    name:"Home"
+                })
+            }
         }
     }
 }
