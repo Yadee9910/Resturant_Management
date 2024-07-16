@@ -3,7 +3,7 @@
     <div class="flex justify-center mt-12 w-full">
         <form class="flex flex-col gap-6 px-2 justify-center w-4/12 items-center">
             <div class="flex flex-col gap-1 w-full ">
-                <label>Name</label>
+                <label class="font-semibold">Name</label>
                 <input  
                         v-model="addfood.name"
                         type="text" 
@@ -13,7 +13,7 @@
             </div>
 
             <div class="flex flex-col gap-1 w-full">
-                <label>Price</label>
+                <label class="font-semibold">Price</label>
                 <input  
                         v-model="addfood.price"
                         type="text" 
@@ -23,7 +23,7 @@
             </div>
 
             <div class="flex flex-col gap-1 w-full">
-                <label>Image Url</label>
+                <label class="font-semibold">Image Url</label>
                 <input  
                         v-model="addfood.image"
                         name="imageUrl"
@@ -98,3 +98,16 @@ export default{
 <style scoped>
 
 </style>
+
+<!-- {
+    "id": "f471",
+    "name": "Vegetable Bun",
+    "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Vegetable_Buns_0eb30b78c1.jpg",
+    "price": "Rs 150/="
+  },
+  {
+    "id": "f67d",
+    "name": "Tea Bun",
+    "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Tea_Bun_828203c111.jpg",
+    "price": "Rs 150/="
+  } -->

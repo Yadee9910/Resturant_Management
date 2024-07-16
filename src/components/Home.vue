@@ -16,24 +16,38 @@
             <img :src=item.image class="object-cover w-full h-48">
            </div>
             
-           <div class="flex flex-row items-center gap-12">
+           <div class="flex flex-row items-center gap-8">
                 <div class=" flex flex-col">
                     <h2 class="text-lg font-semibold mt-4">{{ item.name }}</h2>
                     <p class="mb-4">{{ item.price }}</p>
                 </div>
 
-                <router-link :to="'/update/'+item.id">
-                    <font-awesome-icon icon="pen"  
-                    class="text-lg text-yellow-500"
-                />
-                </router-link>
-               
-           </div>
-           
-           
-            
-        </div>
+                <div class=" flex flex-row gap-4 ">
+                    <router-link :to="'/update/'+item.id">
+                        <font-awesome-icon icon="pen"  
+                        class="text-lg text-yellow-500"
+                    />
+                     </router-link>
 
+                        <font-awesome-icon icon="trash" 
+                            class="text-lg text-red-600"
+                            v-on:click="deleteItems(item.id)"    
+                        />
+                   
+                </div>         
+           </div>          
+        </div>
+    </div>
+
+    <div v-if="modal" class="fixed inset-0 flex items-center justify-center bg-zinc-200 bg-opacity-70 z-30 ">
+        <div class="bg-white rounded-lg w-full max-w-xl p-8 z-50"> 
+                <h1 class="text-center font-semibold text-lg">Are you sure you want to delete this food item?</h1>
+                <div class="flex flex-row justify-evenly mt-4 ">
+                    <button @click="handleDelete" class="bg-yellow-500 py-2 px-2 text-lg font-semibold text-white">Confirm</button>
+                    <button @click="cancelDelete" class="bg-red-600 py-2 px-2 text-lg font-semibold text-white">Cancel</button>
+                </div>
+             
+        </div>
     </div>
    
 </template>
@@ -47,7 +61,9 @@ import axios from 'axios';
         data(){
             return{
                 name:'',
-                foods:[]
+                foods:[],
+                modal:false,
+                deleteId:'',
             }
         },
         name:'Home-Page',
@@ -61,26 +77,38 @@ import axios from 'axios';
             }
         },
         //it will automatically called when page is loaded
-       async  mounted(){
-        let user = localStorage.getItem("user-info");
-        
-        this.name = JSON.parse(user)[0].name;
-        if(!user){
-            this.$router.push({
-                name:"/"
-            })
-        }else{
-            await this.fetchItems();
-        }
-        
-       
+         mounted(){   
+            this.fetchItems();      
         },
 
         methods:{
             async fetchItems() {
+                let user = localStorage.getItem("user-info");
+                this.name = JSON.parse(user)[0].name;
+                    if(!user){
+                        this.$router.push({
+                            name:"/"
+                        })
+                    }
+
                 let result = await axios.get("http://localhost:3000/foodItems");
-                console.log(result);
                 this.foods = result.data;
+            },
+
+            deleteItems(id){
+                    this.modal = !this.modal
+                    this.deleteId = id
+            },
+
+            async handleDelete(){
+                let result  = await axios.delete(`http://localhost:3000/foodItems/`+this.deleteId);
+                console.log(result);
+                this.fetchItems();
+                this.modal=false
+            },
+            
+            cancelDelete(){
+                this.modal=false
             }
         },
     }
