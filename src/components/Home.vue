@@ -1,23 +1,37 @@
 <template>
     <div class="">
         <Header />
+
     </div>
     
-    <div class="">
+    <div class=""> 
         <h1 class=" pt-20 font-semibold flex text-center items-center justify-center text-2xl">Hello {{name}}, Welcome To <span class=" pl-2 text-yellow-600  pr-2">Time BreakFast </span></h1>
         <router-view @item-added ="fetchItems"></router-view>
     </div>
 
     <div v-if="isHomePage" class=" mr-4  ml-4 grid grid-cols-5 gap-12 mt-8 ">
         <div v-for="item in foods" :key="item.id" 
-            class="border  flex flex-col items-center justify-center mb-4">
+            class="border flex flex-col items-center justify-center mb-4">
            <div class=" w-full h-full">
             <img :src=item.image class="object-cover w-full h-48">
            </div>
             
-            <h2 class="text-lg font-semibold mt-4">{{ item.name }}</h2>
-            <p class="mb-4">{{ item.price }}</p>
+           <div class="flex flex-row items-center gap-12">
+                <div class=" flex flex-col">
+                    <h2 class="text-lg font-semibold mt-4">{{ item.name }}</h2>
+                    <p class="mb-4">{{ item.price }}</p>
+                </div>
 
+                <router-link :to="'/update/'+item.id">
+                    <font-awesome-icon icon="pen"  
+                    class="text-lg text-yellow-500"
+                />
+                </router-link>
+               
+           </div>
+           
+           
+            
         </div>
 
     </div>
@@ -25,6 +39,7 @@
 </template>
 
 <script>
+
 import Header from './Header.vue';
 import axios from 'axios';
 
@@ -73,4 +88,5 @@ import axios from 'axios';
 </script>
 
 <style scoped>
+
 </style>

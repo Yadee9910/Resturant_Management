@@ -6,6 +6,7 @@ import Header from './components/Header.vue';
 import Add from './components/Add.vue';
 import Update from './components/Update.vue';
 
+
 const routes =[
     {
         name:'Home',
@@ -18,9 +19,9 @@ const routes =[
               component: Add
             },
             {
-              path: 'update',
-              name: 'Update',
-              component: Update
+                name:'Update',
+                component:Update,
+                path:"/update/:id"
             }
           ]
     },
@@ -40,6 +41,7 @@ const routes =[
         path:'/header'
 
     }
+    
 ];
 
 const router = createRouter({
