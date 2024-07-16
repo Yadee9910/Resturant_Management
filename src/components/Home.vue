@@ -5,7 +5,7 @@
     
     <div class="">
         <h1 class=" pt-20 font-semibold flex text-center items-center justify-center text-2xl">Hello {{name}}, Welcome To <span class=" pl-2 text-yellow-600  pr-2">Time BreakFast </span></h1>
-        <router-view></router-view>
+        <router-view @item-added ="fetchItems"></router-view>
     </div>
 
     <div v-if="isHomePage" class=" mr-4  ml-4 grid grid-cols-5 gap-12 mt-8 ">
@@ -54,12 +54,20 @@ import axios from 'axios';
             this.$router.push({
                 name:"/"
             })
+        }else{
+            await this.fetchItems();
         }
-        let result = await axios.get("http://localhost:3000/foodItems");
-        console.log(result);
-        this.foods = result.data;
+        
        
-        }
+        },
+
+        methods:{
+            async fetchItems() {
+                let result = await axios.get("http://localhost:3000/foodItems");
+                console.log(result);
+                this.foods = result.data;
+            }
+        },
     }
     
 </script>

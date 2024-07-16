@@ -31,45 +31,42 @@
       "password": "1234567898"
     }
   ],
-
-  "foodItems":[
+  "foodItems": [
     {
-    "id":"1",
-    "name":"Sausage Bun",
-    "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Sausage_Bun_cc8f9a5830.jpg",
-    "price": "Rs 100/="
-    },
-
-    {
-      "id":"2",
-      "name":"Seeni Sambol Bun",
-      "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Seeni_Sambol_Bun_7439ca5e43.jpg",
-      "price":"Rs 150/="
-    },
-
-    {
-      "id":"3",
-      "name":"Fish Bun",
-      "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Fish_Bun_f338cdaffc.jpg",
-      "price":"Rs 250/="
+      "id": "1",
+      "name": "Sausage Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Sausage_Bun_cc8f9a5830.jpg",
+      "price": "Rs 100/="
     },
     {
-      "id":"4",
-      "name":"Kimbula Bun",
-      "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Kimbula_Bun_56af7b7e8c.jpg",
-      "price":"Rs 150/="
+      "id": "2",
+      "name": "Seeni Sambol Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Seeni_Sambol_Bun_7439ca5e43.jpg",
+      "price": "Rs 150/="
     },
     {
-      "id":"5",
-      "name":"Vegetable Bun",
-      "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Vegetable_Buns_0eb30b78c1.jpg",
-      "price":"Rs 150/="
+      "id": "3",
+      "name": "Fish Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Fish_Bun_f338cdaffc.jpg",
+      "price": "Rs 250/="
     },
     {
-      "id":"6",
-      "name":"Tea Bun",
-      "image":"https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Tea_Bun_828203c111.jpg",
-      "price":"Rs 150/="
+      "id": "4",
+      "name": "Kimbula Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Kimbula_Bun_56af7b7e8c.jpg",
+      "price": "Rs 150/="
+    },
+    {
+      "id": "f471",
+      "name": "Vegetable Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Vegetable_Buns_0eb30b78c1.jpg",
+      "price": "Rs 150/="
+    },
+    {
+      "id": "f67d",
+      "name": "Tea Bun",
+      "image": "https://cdn-creativehub.sgp1.cdn.digitaloceanspaces.com/pns/P_and_S_Tea_Bun_828203c111.jpg",
+      "price": "Rs 150/="
     }
   ]
 }
