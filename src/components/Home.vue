@@ -77,20 +77,10 @@ import axios from 'axios';
             }
         },
         //it will automatically called when page is loaded
-         mounted(){   
-            this.fetchItems();      
-        },
+      
 
         methods:{
             async fetchItems() {
-                let user = localStorage.getItem("user-info");
-                this.name = JSON.parse(user)[0].name;
-                    if(!user){
-                        this.$router.push({
-                            name:"/"
-                        })
-                    }
-
                 let result = await axios.get("http://localhost:3000/foodItems");
                 this.foods = result.data;
             },
@@ -103,13 +93,26 @@ import axios from 'axios';
             async handleDelete(){
                 let result  = await axios.delete(`http://localhost:3000/foodItems/`+this.deleteId);
                 console.log(result);
-                this.fetchItems();
+                 await this.fetchItems();
                 this.modal=false
             },
-            
             cancelDelete(){
                 this.modal=false
             }
+        },
+
+        async  mounted(){
+        let user = localStorage.getItem("user-info");
+       
+
+        if(!user){
+            this.$router.push({ path: "/" });
+        }else{
+            this.name = JSON.parse(user)[0].name;
+            await this.fetchItems();
+        }
+        
+       
         },
     }
     
