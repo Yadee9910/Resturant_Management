@@ -8,14 +8,15 @@
         <router-view></router-view>
     </div>
 
-    <div class="grid grid-cols-5 gap-12 mt-8 ">
+    <div v-if="isHomePage" class=" mr-4  ml-4 grid grid-cols-5 gap-12 mt-8 ">
         <div v-for="item in foods" :key="item.id" 
-            class="border bg-yellow-100 flex flex-col items-center justify-center mb-4">
+            class="border  flex flex-col items-center justify-center mb-4">
            <div class=" w-full h-full">
-            <img :src=item.image class="object-container w-full h-64">
+            <img :src=item.image class="object-cover w-full h-48">
            </div>
             
             <h2 class="text-lg font-semibold mt-4">{{ item.name }}</h2>
+            <p class="mb-4">{{ item.price }}</p>
 
         </div>
 
@@ -37,6 +38,12 @@ import axios from 'axios';
         name:'Home-Page',
         components:{
             Header
+        },
+
+        computed:{
+            isHomePage(){
+                return this.$route.name === "Home";
+            }
         },
         //it will automatically called when page is loaded
        async  mounted(){
